@@ -1,0 +1,61 @@
+<!-- <h2>Listado de Héroes</h2>
+
+<ul class="mt-2 list-group">
+  <li class="list-group-item">Spiderman</li>
+  <li class="list-group-item">Ironman</li>
+  <li class="list-group-item">Hulk</li>
+</ul>
+<hr> -->
+<h3>X-Men</h3>
+<div *ngIf="deletedXmen; else nadaFueBorrado">
+  <h4>Héroe borrado <small class="text-danger"> {{deletedXmen}} </small></h4>
+</div>
+<!-- <h4 *ngIf="!deletedHero">No ha borrado nada</h4> -->
+<ng-template #nadaFueBorrado>
+  <h4>No ha borrado X-Men</h4>
+</ng-template>
+<button
+  *ngIf="xMen.length > 0"
+  (click)="removeLastXmen()"
+  class="btn btn-outline-danger">
+  Borrar ultimo X-Men
+</button>
+<ul class="mt-2 list-group">
+  <li *ngFor="let xmen of xMen" class="list-group-item">
+    {{xmen}}
+  </li>
+</ul>
+<hr>
+
+<h3>Simbiones</h3>
+<h4 *ngIf="!deletedSimbionte; else simbionteBorrado">No ha borrado Simbiontes</h4>
+<ng-template #simbionteBorrado>
+  <h4>Simbionte borrado <small class="text-danger"> {{deletedSimbionte}} </small></h4>
+</ng-template>
+<button
+  *ngIf="simbiontes.length > 0"
+  (click)="removeFirstSimbionte()"
+  class="btn btn-outline-secondary">
+  Borrar el primen Simbionte
+</button>
+<ul class="mt-2 list-group">
+  <li *ngFor="let simbionte of simbiontes" class="list-group-item">
+    {{simbionte}}
+  </li>
+</ul>
+<hr>
+
+
+<h3>Villanos</h3>
+<h4 *ngIf="deletedVillain; else villanoNoEliminado">
+  Villano eliminado <small class="text-danger"> {{deletedVillain}} </small>
+</h4>
+<ng-template #villanoNoEliminado>
+  <h4>No ha borrado Villanos</h4>
+</ng-template>
+<button (click)="removeLastVillain()" class="btn btn-outline-primary">Borrar el último Villano</button>
+<ul class="mt-2 list-group">
+  <li *ngFor="let villano of villains" class="list-group-item">
+    <strong> {{villano}} </strong>
+  </li>
+</ul>
